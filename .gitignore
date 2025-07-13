@@ -1,0 +1,16 @@
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+.env
+
+# pre-commit
+.pre-commit-config.yaml
+
+JKWSite/settings/local.py
+db.sqlite3
+__pycache__
+.DS_Store
+
