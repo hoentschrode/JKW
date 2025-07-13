@@ -13,4 +13,12 @@ JKWSite/settings/local.py
 db.sqlite3
 __pycache__
 .DS_Store
+!JKWSite/media/documents
+JKWSite/media/documents/*
+!JKWSite/media/images
+JKWSite/media/images/*
+!JKWSite/media/original_images
+JKWSite/media/original_images/*
+!JKWSite/static
+JKWSite/static/**
 
