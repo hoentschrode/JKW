@@ -1,0 +1,8 @@
+{% load wagtailcore_tags %}
+<div class="col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
+  <div class="tile-block gy-4 d-flex flex-column align-items-center justify-content-top">
+    {% if self.headline %}<h1>{{ self.headline }}</h1>{% endif %}
+    {% if self.body %}{{ self.body }}{% endif %}
+    {% if self.link %}{% include_block self.link %}{% endif %}
+  </div>
+</div>

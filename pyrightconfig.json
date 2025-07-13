@@ -1,0 +1,5 @@
+{
+  "venvPath": "./.devenv/state",
+  "venv": "venv",
+  "reportIncompatibleVariableOverride": false
+}

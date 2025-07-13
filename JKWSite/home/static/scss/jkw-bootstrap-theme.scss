@@ -1,0 +1,58 @@
+@import "fonts";
+
+@import "../vendor/bootstrap/functions";
+@import "../vendor/bootstrap/variables";
+
+$color-primary: #999999;
+
+@import "../vendor/bootstrap/bootstrap";
+
+// Theme variables
+$font-primary: $font-family-base;
+$font-secondary: "Canter", "sans serif";
+
+$color-default: #212529;
+$color-white: #fff;
+$color-white-70: rgba(255, 255, 255, 0.7);
+$color-primary: rgb(69, 135, 161);
+$color-secondary: #37373f;
+$color-footer-background: #1f1f24;
+
+body {
+  font-family: $font-primary;
+  color: $color-default;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-secondary;
+}
+
+a {
+  text-decoration: none;
+}
+
+section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  &.highlighted {
+    background-color: #eee;
+  }
+  &:first-of-type {
+    margin-top: 5rem;
+  }
+}
+
+.btn {
+  border-radius: 1rem;
+  border: none;
+  &.btn-primary {
+    font-size: 1rem;
+    color: $color-white;
+  }
+}
+@import "layout";

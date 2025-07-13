@@ -1,0 +1,141 @@
+// SCSS for layout blocks
+
+header {
+  background: $color-white;
+  height: 5rem;
+}
+
+footer {
+  font-size: 1rem;
+  color: $color-white-70;
+  background-color: $color-footer-background;
+  padding: 2rem;
+
+  .icon {
+    margin-right: 1rem;
+    font-size: 2rem;
+    line-height: 0;
+  }
+
+  h1 {
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 0.5rem;
+    color: $color-white;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .footer-text {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    a {
+      color: $color-white;
+    }
+  }
+}
+
+.tile-block {
+  padding: 2rem;
+  background: $color-primary;
+  color: $color-white;
+  height: 100%;
+  width: 100%;
+
+  h1 {
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .btn-primary {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-weight: 400;
+    &:hover {
+      color: $color-primary;
+      background: $color-white;
+      transition: 0.3s;
+    }
+  }
+}
+
+.card-block {
+  background: $color-white;
+  padding: 1.5rem 2rem;
+  border-radius: 2rem;
+  height: 100%;
+  width: 100%;
+  border: 1px solid rgba(55, 55, 63, 0.1);
+  @media (min-width: 992px) {
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.1);
+    }
+  }
+
+  i {
+    font-size: 2rem;
+    color: $color-primary;
+    background: rgba(206, 18, 18, 0.1);
+    border-radius: 4rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .no-icon {
+    height: 4rem;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.flyer-slide {
+  max-width: 100%;
+  max-height: 100%;
+  h1,
+  h2 {
+    font-family: $font-primary;
+    color: $color-white;
+  }
+  h2 {
+    border-bottom: 2px solid $color-primary;
+  }
+  p {
+    color: $color-white;
+  }
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    max-height: 15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  picture {
+    filter: brightness(60%);
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
+    }
+  }
+}

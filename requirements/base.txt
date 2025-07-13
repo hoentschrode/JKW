@@ -1,0 +1,8 @@
+# Base requirements
+Django>=5.2,<5.3
+wagtail>=7.0,<7.1
+wagtail-font-awesome-svg==1.1
+django-dotenv==1.4.2
+dj-database-url==3.0.0
+django-compressor==4.5.1
+django-libsass==0.9

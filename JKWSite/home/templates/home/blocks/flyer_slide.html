@@ -1,0 +1,9 @@
+{% load wagtailcore_tags wagtailimages_tags %} 
+<div class="swiper-slide flyer-slide">
+    {% picture self.image format-{avif,webp,png} fill-500x500-c100 %}
+    <div class="overlay d-flex flex-column">
+      {% if self.title %}<h1>{{ self.title }}</h1>{% endif %}
+      {% if self.subtitle %}<h2>{{ self.subtitle }}</h2>{% endif %}
+      {% if self.teaser_text %}{{ self.teaser_text|richtext }}{% endif %}
+    </div>
+</div>

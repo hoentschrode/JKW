@@ -1,0 +1,54 @@
+{% load wagtailcore_tags jkwtags i18n %}
+{% with settings=settings.home.ContactSettings openingHours=settings.home.OpeningHoursSettings %}
+    <footer>
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-lg-3 col-md-6 d-flex">
+                    {% if settings.street or settings.zip_code or settings.city %}
+                        <i class="bi bi-geo-alt icon"></i>
+                        <div>
+                            <h1>{% translate "Address" %}</h1>
+                            <p>
+                                {% if settings.street %}
+                                    {{ settings.street }}
+                                    <br />
+                                {% endif %}
+                                {% if settings.zip_code or settings.city %}{{ settings.zip_code }} {{ settings.city }}{% endif %}
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    {% if settings.phone_number or settings.email %}
+                        <i class="bi bi-telephone icon"></i>
+                        <div>
+                            <h1>{% translate "Contact" %}</h1>
+                            <p>
+                                {% if settings.phone_number %}
+                                    {% translate "Phone" %}: {{ settings.phone_number }}
+                                    <br />
+                                {% endif %}
+                                {% if settings.email %}
+                                    {% translate "Email" %}: {{ settings.email }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">
+                    {% if openingHours.opening_hours %}
+                        <i class="bi bi-clock icon"></i>
+                        <div>
+                            <h1>{% translate "Opening hours" %}</h1>
+                            {{ openingHours.opening_hours|richtext }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-3 col-md-6 d-flex">{% get_footer_extra_slot %}</div>
+            </div>
+        </div>
+        <div class="container footer-text">
+            <div class="row">{% get_footer_text %}</div>
+        </div>
+    </footer>
+{% endwith %}

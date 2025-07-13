@@ -1,0 +1,8 @@
+{% load wagtailcore_tags %}
+<div class="col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size}}{% endif %} d-flex align-items-top">
+  <div class="row gy-4 flex-grow-1">
+    {% for column in self.columns %}
+      {% include_block column %}
+    {% endfor %}
+  </div>
+</div>
