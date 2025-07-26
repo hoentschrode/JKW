@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-12 13:47+0000\n"
+"POT-Creation-Date: 2025-07-26 14:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,8 +56,8 @@ msgstr ""
 
 #: home/blocks/html.py:21
 msgid ""
-"Insert a boostrap icon name here. Look up: <a href=\"https://"
-"icons.getbootstrap.com/\" target=\"_blank\">here</a>"
+"Insert a boostrap icon name here. Look up: <a href=\"https://icons."
+"getbootstrap.com/\" target=\"_blank\">here</a>"
 msgstr ""
 
 #: home/blocks/layout.py:20
@@ -132,71 +132,120 @@ msgstr ""
 msgid "Flyer"
 msgstr ""
 
-#: home/blocks/layout.py:99
+#: home/blocks/layout.py:99 home/models/pages.py:29
 msgid "Subtitle"
 msgstr ""
 
-#: home/models/footer.py:21
+#: home/models/footer.py:22
 msgid "Text"
 msgstr ""
 
-#: home/models/footer.py:27 home/models/footer.py:30
-msgid "Footer text"
+#: home/models/footer.py:25
+msgid "Extra footer slot"
 msgstr ""
 
-#: home/models/footer.py:31
+#: home/models/footer.py:31 home/models/footer.py:34
+msgid "Footer text"
+msgstr "Fußzeilentext"
+
+#: home/models/footer.py:35
 msgid "Footer texts"
 msgstr ""
 
-#: home/models/pages.py:22
+#: home/models/pages.py:24
 msgid "Home page"
 msgstr ""
 
-#: home/models/pages.py:32
-msgid "Page"
+#: home/models/pages.py:29
+msgid "Additional sub title"
 msgstr ""
 
-#: home/models/settings.py:14
+#: home/models/pages.py:37
+msgid "Descriptive sample image (cropped to be rectangled)."
+msgstr "Vorschaubild (wird quaratisch zugeschnitten)"
+
+#: home/models/pages.py:47
+msgid "Description"
+msgstr "Beschreibung"
+
+#: home/models/pages.py:47
+msgid "Short description text"
+msgstr "Kurzer Teaser Text"
+
+#: home/models/pages.py:66
+msgid "Flyer page"
+msgstr "Flyer-Seite"
+
+#: home/models/pages.py:71
+msgid "Introduction"
+msgstr "Text"
+
+#: home/models/pages.py:72
+msgid "Text to describe the page"
+msgstr "Kurzer Text zur Einführung"
+
+#: home/models/pages.py:80
+msgid "Flyer index page"
+msgstr "Flyerübersicht-Seite"
+
+#: home/models/settings.py:16
 msgid "Name"
 msgstr ""
 
-#: home/models/settings.py:22
+#: home/models/settings.py:24
 msgid "Logo"
 msgstr ""
 
-#: home/models/settings.py:26
+#: home/models/settings.py:28
+msgid "MainMenu CTA link text"
+msgstr "Menü CTA-Text"
+
+#: home/models/settings.py:36
+msgid "MainMenu CTA document link"
+msgstr "Menü CTA-Link"
+
+#: home/models/settings.py:40
 msgid "Street"
 msgstr "Straße"
 
-#: home/models/settings.py:29
+#: home/models/settings.py:43
 msgid "Zip code"
 msgstr "PLZ"
 
-#: home/models/settings.py:32
+#: home/models/settings.py:46
 msgid "City"
 msgstr "Ort"
 
-#: home/models/settings.py:36
+#: home/models/settings.py:50
 msgid "Phone number"
 msgstr "Telefon"
 
-#: home/models/settings.py:39 home/templates/home/includes/footer.html:33
+#: home/models/settings.py:53 home/templates/home/includes/footer.html:32
 msgid "Email"
 msgstr ""
 
-#: home/models/settings.py:50 home/templates/home/includes/footer.html:10
+#: home/models/settings.py:64
+msgid "MainMenu CTA"
+msgstr ""
+
+#: home/models/settings.py:71 home/templates/home/includes/footer.html:10
 msgid "Address"
 msgstr "Anschrift"
 
-#: home/models/settings.py:53 home/templates/home/includes/footer.html:27
+#: home/models/settings.py:74 home/templates/home/includes/footer.html:25
 msgid "Contact"
 msgstr "Kontaktdaten"
 
-#: home/models/settings.py:58
+#: home/models/settings.py:79
 msgid "Contact settings"
 msgstr "Kontaktdaten"
 
-#: home/templates/home/includes/footer.html:30
+#: home/models/settings.py:87 home/models/settings.py:93
+#: home/templates/home/includes/footer.html:42
+msgid "Opening hours"
+msgstr ""
+
+#: home/templates/home/includes/footer.html:28
 msgid "Phone"
 msgstr ""
 

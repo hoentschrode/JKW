@@ -1,4 +1,4 @@
-from django.db.models import SET_NULL, CharField, ForeignKey, TextField
+from django.db.models import PROTECT, CharField, ForeignKey, TextField
 from wagtail.fields import StreamField
 from wagtail.models import Page
 from django.utils.translation import gettext_lazy as _
@@ -30,17 +30,17 @@ class FlyerPage(Page):
     )
     image = ForeignKey(
         "wagtailimages.Image",
-        null=True,
-        blank=True,
-        on_delete=SET_NULL,
+        null=False,
+        blank=False,
+        on_delete=PROTECT,
         related_name="+",
         help_text=_("Descriptive sample image (cropped to be rectangled)."),
     )
     document = ForeignKey(
         get_document_model(),
-        null=True,
-        blank=True,
-        on_delete=SET_NULL,
+        null=False,
+        blank=False,
+        on_delete=PROTECT,
         related_name="+",
     )
     description = TextField(
@@ -62,6 +62,9 @@ class FlyerPage(Page):
     subpage_types = []
     template = "home/pages/flyer_page.html"
 
+    class Meta:
+        verbose_name = _("Flyer page")
+
 
 class FlyerIndexPage(Page):
     introduction = TextField(
@@ -72,3 +75,6 @@ class FlyerIndexPage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("introduction")]
     subpage_types = ["FlyerPage"]
+
+    class Meta:
+        verbose_name = _("Flyer index page")
