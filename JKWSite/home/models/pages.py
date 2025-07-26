@@ -3,7 +3,7 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, FieldRowPanel
-from home.blocks import CONTENT_BLOCKS, LAYOUT_BLOCKS
+from home.blocks import LAYOUT_BLOCKS
 from wagtail.documents import get_document_model
 
 
@@ -22,16 +22,6 @@ class HomePage(Page):
 
     class Meta:
         verbose_name = _("Home page")
-
-
-class SimplePage(Page):
-    template = "home/pages/page.html"
-    # Fields
-    body = StreamField(CONTENT_BLOCKS, null=True, blank=True)
-    content_panels = Page.content_panels + [FieldPanel("body")]
-
-    class Meta:
-        verbose_name = _("Page")
 
 
 class FlyerPage(Page):
@@ -65,10 +55,12 @@ class FlyerPage(Page):
                 FieldPanel("document"),
             ]
         ),
+        FieldPanel("description"),
     ]
 
     parent_page_types = ["FlyerIndexPage"]
     subpage_types = []
+    template = "home/pages/flyer_page.html"
 
 
 class FlyerIndexPage(Page):

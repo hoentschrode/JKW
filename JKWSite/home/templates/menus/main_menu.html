@@ -1,0 +1,26 @@
+{% load menu_tags %}
+
+{% with settings=settings.home.ContactSettings %}
+<nav class="navbar">
+  <ul>
+  {% for item in menu_items %}
+    <li {% if item.has_children_in_menu %} class="dropdown"{% endif %}>
+      <a class="{{ item.active_class }}" href="{{ item.href }}">
+        {{ item.text }}
+        {% if item.has_children_in_menu %}
+          <i class="bi bi-chevron-down dropdown-indicator"></i>
+        {% endif %}
+      </a>
+      {% if item.has_children_in_menu %}
+        {% sub_menu item %}
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</nav>
+{% if settings.main_menu_cta_document_link and settings.main_menu_cta_text %}
+<a class="btn-primary" href="{{ settings.main_menu_cta_document_link.url }}">{{ settings.main_menu_cta_text }}</a>
+{% endif %}
+<i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+<i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+{% endwith %}

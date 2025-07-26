@@ -35,19 +35,18 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body>
         {% wagtailuserbar %}
         {% block header%}{% endblock %}
         {% block content %}{% endblock %}
         {% block footer %}{% endblock %}
-
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/JKWSite.js' %}"></script>
 
         {% block extra_js %}
         {% spaceless %}
         {# Override this in templates to add extra javascript #}
         {% endspaceless %}
         {% endblock %}
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/JKWSite.js' %}"></script>
     </body>
 </html>

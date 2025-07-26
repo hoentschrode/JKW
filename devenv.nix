@@ -18,7 +18,6 @@
       enable = true;
       version = "3.10.12";
       venv.enable = true;
-      venv.requirements = "./requirements/development.txt";
     };
   };
 

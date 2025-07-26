@@ -1,0 +1,18 @@
+{% load menu_tags %}
+{% if menu_items %}
+  <ul>
+    {% for item in menu_items %}
+    <li {% if item.has_children_in_menu %}class="dropdown"{% endif %}>
+        <a href="{{ item.href }}">
+          {{ item.text }}
+          {% if item.has_children_in_menu %}
+            <i class="bi bi-chevron-down dropdown-indicator"></i>
+          {% endif %}
+        </a>
+        {% if item.has_children_in_menu %}
+          {% sub_menu item %}
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

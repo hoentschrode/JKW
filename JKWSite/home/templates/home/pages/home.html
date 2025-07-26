@@ -1,36 +1,14 @@
-{% extends "base.html" %}
+{% extends "home/pages/page.html" %}
 {% load static wagtailcore_tags jkwtags %}
-
 {% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />
-{% endblock extra_css %}
-
-{% block header %}{% include "home/includes/header.html" %}{% endblock %}
+        <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />
+        {% endblock extra_css%}
 {% block content %}
+<main>
   {% for block in page.body %}
     <section {% if forloop.counter0|divisibleby:2 %}class="highlighted"{% endif %}>
       {% include_block block %}
     </section>
   {% endfor %}
+</main>
 {% endblock content %}
-
-{% block footer %}
-  {% include "home/includes/footer.html" %}
-{% endblock %}
-{% block extra_js %}
-{% for block in page.body %}
-  {% for lib in block.block.extra_js_static_libs %}
-    <script type="text/javascript" src="{% get_static_prefix %}{{ lib }}"></script>
-  {% endfor %}
-{% endfor %}
-<script>
-  document.addEventListener('DOMContentLoaded', ()=>{
-    {% for block in page.body %}
-      {% if block.block.inline_js %}
-        {{ block.block.inline_js|safeseq|join:'' }}
-      {% endif %}
-    {% endfor %}
-  });
-</script>
-{% endblock %}
-

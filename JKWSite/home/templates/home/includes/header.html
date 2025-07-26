@@ -1,6 +1,7 @@
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags menu_tags %}
 <header class="fixed-top d-flex align-items-center">
   <div class="container d-flex align-items-center justify-content-between">
-    {% picture settings.home.ContactSettings.logo_image format-{avif,webp,png} fill-{50x30,100x70} sizes="(max-width: 578px) 50px, 100px" id="pic" width=None height=None %}
+    {% picture settings.home.ContactSettings.logo_image format-{avif,webp,png} fill-100x70 id="pic" %}
+    {% main_menu max_levels=3 %}
   </div>
 </header>

@@ -4,6 +4,7 @@ from django.db import models
 from wagtail.admin.panels import FieldPanel, FieldRowPanel, MultiFieldPanel
 from wagtail.contrib.settings.models import BaseGenericSetting, register_setting
 from django.utils.translation import gettext_lazy as _
+from wagtail.documents import get_document_model
 from wagtail.fields import RichTextField
 
 
@@ -21,6 +22,18 @@ class ContactSettings(BaseGenericSetting):
         on_delete=models.SET_NULL,
         related_name="+",
         verbose_name=_("Logo"),
+    )
+
+    main_menu_cta_text = models.CharField(
+        max_length=200, blank=True, null=True, verbose_name=_("MainMenu CTA link text")
+    )
+    main_menu_cta_document_link = models.ForeignKey(
+        get_document_model(),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="+",
+        verbose_name=_("MainMenu CTA document link"),
     )
 
     street = models.CharField(
@@ -43,6 +56,13 @@ class ContactSettings(BaseGenericSetting):
     panels = [
         FieldPanel("name"),
         FieldPanel("logo_image"),
+        MultiFieldPanel(
+            [
+                FieldPanel("main_menu_cta_text"),
+                FieldPanel("main_menu_cta_document_link"),
+            ],
+            _("MainMenu CTA"),
+        ),
         MultiFieldPanel(
             [
                 FieldPanel("street"),

@@ -72,3 +72,11 @@ class LinkBlock(StructBlock):
         label = _("Link")
         icon = "Link"
         value_class = LinkStructValue
+
+
+class FlyerSwiperBlock(StructBlock):
+    """Shows all flyers as swiper."""
+
+    class Meta:
+        template = "home/blocks/flyer_swiper.html"
+        icon = "resubmit"

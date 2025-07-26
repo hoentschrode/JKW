@@ -2,6 +2,7 @@ from django import template
 import random
 import string
 from home.models.footer import Footer
+from home.models.pages import FlyerPage
 
 register = template.Library()
 
@@ -32,3 +33,11 @@ def get_footer_extra_slot(context):
         instance = Footer.objects.filter(live=True).first()  # type: ignore
         extra_slot = instance.extra_slot if instance else ""
     return {"extra_slot": extra_slot}
+
+
+@register.inclusion_tag("home/includes/flyer_swiper.html", takes_context=True)
+def get_flyer_swiper(context):
+    flyers = context.get("flyers", "")
+    if not flyers:
+        flyers = FlyerPage.objects.filter(live=True).all()
+    return {"flyers": flyers}

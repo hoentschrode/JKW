@@ -1,11 +1,29 @@
 // SCSS for layout blocks
 
+.btn-primary,
+.btn-primary:focus {
+  font-size: 1rem;
+  color: #fff;
+  background: $color-primary;
+  padding: 10px 35px;
+  border-radius: 50px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  &:hover {
+    color: #fff;
+    background: $color-hover;
+  }
+}
+
 header {
   background: $color-white;
-  height: 5rem;
+  height: 90px;
+  width: 100%;
 }
 
 footer {
+  margin-top: 5rem;
   font-size: 1rem;
   color: $color-white-70;
   background-color: $color-footer-background;
@@ -37,6 +55,339 @@ footer {
 
     a {
       color: $color-white;
+    }
+  }
+}
+
+@media (min-width: 1280px) {
+  // Base navbar styles
+  .navbar {
+    padding: 0;
+
+    // Base list styling
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    // Base list item styling
+    li {
+      position: relative;
+    }
+
+    // Top-level list items
+    > ul > li {
+      white-space: nowrap;
+      padding: 10px 0 10px 28px;
+    }
+
+    // Base link styling - shared between normal and focused states
+    %link-base {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3px;
+      font-family: $font-primary;
+      font-size: 16px;
+      font-weight: 600;
+      color: #7f7f90;
+      white-space: nowrap;
+      transition: 0.3s;
+      position: relative;
+
+      // Icon styling within links
+      i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+      }
+    }
+
+    // Apply base link styles to both normal and focused states
+    a,
+    a:focus {
+      @extend %link-base;
+    }
+
+    // Underline effect for top-level links
+    > ul > li > a {
+      &:before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: $color-primary;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out 0s;
+      }
+    }
+
+    // Hover and active states - shared styling
+    %active-link {
+      color: #000;
+
+      &:before {
+        visibility: visible;
+        width: 100%;
+      }
+    }
+
+    // Apply active link styles to various states
+    a:hover,
+    .active,
+    .active:focus,
+    li:hover > a {
+      @extend %active-link;
+    }
+
+    // Dropdown menu system
+    .dropdown {
+      // Base dropdown menu
+      ul {
+        display: block;
+        position: absolute;
+        left: 28px;
+        top: calc(100% + 30px);
+        margin: 0;
+        padding: 10px 0;
+        z-index: 99;
+        opacity: 0;
+        visibility: hidden;
+        background: #fff;
+        box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+        transition: 0.3s;
+        border-radius: 4px;
+
+        // Dropdown list items
+        li {
+          min-width: 200px;
+        }
+
+        // Dropdown links
+        a {
+          padding: 10px 20px;
+          font-size: 15px;
+          text-transform: none;
+          font-weight: 600;
+
+          i {
+            font-size: 12px;
+          }
+
+          // Dropdown link hover states
+          &:hover {
+            color: $color-primary;
+          }
+        }
+
+        // Dropdown active and hover states
+        .active:hover,
+        li:hover > a {
+          color: $color-primary;
+        }
+      }
+
+      // Show dropdown on hover
+      &:hover > ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+      }
+
+      // Nested dropdown (submenu)
+      .dropdown {
+        ul {
+          top: 0;
+          left: calc(100% - 30px);
+          visibility: hidden;
+        }
+
+        // Show nested dropdown on hover
+        &:hover > ul {
+          opacity: 1;
+          top: 0;
+          left: 100%;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  // Mobile navbar item (hidden by default)
+  .navbar-mobile-item {
+    display: none;
+  }
+  .mobile-nav-hide,
+  .mobile-nav-show {
+    display: none;
+  }
+}
+
+// Mobile navbar
+@media (max-width: 1279px) {
+  // Mixins for reusable styles
+  @mixin base-transition($duration: 0.3s) {
+    transition: $duration;
+  }
+
+  @mixin link-base-styles {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-family: var(--font-secondary);
+    border-bottom: 2px solid $border-bottom-color;
+    font-size: 16px;
+    font-weight: 600;
+    color: $text-color;
+    white-space: nowrap;
+    @include base-transition();
+  }
+
+  @mixin mobile-nav-control-styles {
+    color: $color-secondary;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    z-index: $nav-controls-z-index;
+  }
+
+  @mixin dropdown-ul-styles {
+    position: static;
+    display: none;
+    padding: 10px 0;
+    margin: 10px 20px;
+    transition: all 0.5s ease-in-out;
+    border: 1px solid $dropdown-border;
+  }
+
+  // Mobile navigation variables
+  $navbar-width: 400px;
+  $navbar-z-index: 9997;
+  $overlay-z-index: 9996;
+  $nav-list-z-index: 9998;
+  $nav-controls-z-index: 9999;
+
+  // Color variables
+  $border-color: #666;
+  $text-color: #7f7f90;
+  $text-color-hover: #000;
+  $background-overlay: rgba(255, 255, 255, 0.9);
+  $background-overlay-dark: rgba(255, 255, 255, 0.8);
+  $border-bottom-color: rgba(255, 255, 255, 0.8);
+  $dropdown-border: #eee;
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: $navbar-width;
+    border-left: 1px solid $border-color;
+    bottom: 0;
+    z-index: $navbar-z-index;
+    @include base-transition();
+
+    ul {
+      position: absolute;
+      inset: 0;
+      padding: 50px 0 10px 0;
+      margin: 0;
+      background: $background-overlay;
+      overflow-y: auto;
+      z-index: $nav-list-z-index;
+      @include base-transition();
+    }
+
+    a,
+    a:focus {
+      @include link-base-styles();
+
+      i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+      }
+
+      &:hover {
+        color: $text-color-hover;
+      }
+    }
+
+    li:hover > a {
+      color: $text-color-hover;
+    }
+
+    .active {
+      &,
+      &:focus {
+        color: $text-color-hover;
+        border-color: $color-primary;
+      }
+    }
+
+    .dropdown {
+      ul {
+        @include dropdown-ul-styles();
+      }
+
+      > .dropdown-active {
+        display: block;
+      }
+
+      .dropdown {
+        ul {
+          @include dropdown-ul-styles();
+        }
+
+        > .dropdown-active {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // Mobile navigation controls
+  .mobile-nav-show {
+    @include mobile-nav-control-styles();
+    font-size: 28px;
+    margin: 0 10px 0 20px;
+  }
+
+  .mobile-nav-hide {
+    @include mobile-nav-control-styles();
+    font-size: 32px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+  }
+
+  // Mobile navigation active state
+  .mobile-nav-active {
+    overflow: hidden;
+
+    .navbar {
+      right: 0;
+
+      &:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: $background-overlay-dark;
+        z-index: $overlay-z-index;
+      }
+    }
+  }
+
+  // Header specific styles
+  .header {
+    .btn-primary {
+      margin-left: 20px;
     }
   }
 }
@@ -104,34 +455,60 @@ footer {
   }
 }
 
+.swiper {
+  margin: 0;
+  min-height: 500px;
+
+  .swiper-pagination {
+    margin-top: 1rem;
+    position: relative;
+
+    .swiper-pagination-bullet {
+      width: 0.75rem;
+      height: 0.75rem;
+      background-color: $color-black-20;
+      opacity: 1;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $color-primary;
+    }
+  }
+}
+
 .flyer-slide {
-  max-width: 100%;
-  max-height: 100%;
-  h1,
-  h2 {
-    font-family: $font-primary;
-    color: $color-white;
-  }
-  h2 {
-    border-bottom: 2px solid $color-primary;
-  }
-  p {
-    color: $color-white;
-  }
+  max-width: 500px;
+
   .overlay {
     position: absolute;
+    left: 5%;
+    right: 5%;
+    width: 90%;
     top: 50%;
-    left: 2rem;
-    max-height: 15rem;
+    height: 50%;
     overflow: hidden;
     text-overflow: ellipsis;
+    h1,
+    h2 {
+      font-family: $font-primary;
+      color: $color-white;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 2px solid $color-primary;
+    }
     p {
+      color: $color-white;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
   picture {
-    filter: brightness(60%);
+    filter: brightness(50%);
+    z-index: 100;
     img {
       max-width: 100%;
       max-height: 100%;
