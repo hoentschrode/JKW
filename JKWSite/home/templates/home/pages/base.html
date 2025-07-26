@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% comment %}
+
+General base page, master for all sub pages!
+
+{% endcomment %}
+{% load static wagtailcore_tags %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block header %}{% include "home/includes/header.html" %}{% endblock %}
+
+{% block footer %}
+  {% include "home/includes/footer.html" %}
+{% endblock %}
+{% block extra_js %}
+  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+{% endblock %}

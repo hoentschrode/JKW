@@ -1,4 +1,7 @@
-{% extends "home/pages/page.html" %}
+{% extends "home/pages/base.html" %}
+{% comment %}
+Homepage - basic page without breadcrumbs.
+{% endcomment %}
 {% load static wagtailcore_tags jkwtags %}
 {% block extra_css %}
         <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />

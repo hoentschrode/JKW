@@ -1,15 +1,27 @@
-{% extends "base.html" %}
-{% load static wagtailcore_tags %}
-
-{% block extra_css %}
-{% endblock extra_css %}
-
-{% block header %}{% include "home/includes/header.html" %}{% endblock %}
-
-{% block footer %}
-  {% include "home/includes/footer.html" %}
-{% endblock %}
-{% block extra_js %}
-  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-{% endblock %}
+{% extends "home/pages/base.html" %}
+{% load wagtailcore_tags %}
+{% comment %}
+Basic page with navigation and breadcumbs
+{% endcomment %}
+{% block content %}
+<main style="margin-top:90px;">
+  <div class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h1>{{ page.title }}</h1>
+        {% if self.get_ancestors|length > 1 %}
+          <ol>
+            {% for p in self.get_ancestors %}
+              {% if p.is_root == False %}
+                <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            <li>{{ page.title }}</li>
+          </ol>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div>Hurz</div>
+</main>
+{% endblock content %}

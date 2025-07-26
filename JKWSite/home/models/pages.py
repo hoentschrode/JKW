@@ -60,7 +60,7 @@ class FlyerPage(Page):
 
     parent_page_types = ["FlyerIndexPage"]
     subpage_types = []
-    template = "home/pages/flyer_page.html"
+    template = "home/pages/page.html"
 
     class Meta:
         verbose_name = _("Flyer page")
