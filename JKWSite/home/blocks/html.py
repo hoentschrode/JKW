@@ -20,3 +20,26 @@ class IconBlock(blocks.StructBlock):
         help_text = _(
             'Insert a boostrap icon name here. Look up: <a href="https://icons.getbootstrap.com/" target="_blank">here</a>'
         )
+
+
+class HeadingBlock(blocks.StructBlock):
+    """Custom heading block for H1...H4 elements."""
+
+    text = blocks.CharBlock(required=True, label=_("Heading text"))
+    level = blocks.ChoiceBlock(
+        choices=[
+            ("", _("Select header level")),
+            ("h1", "H1"),
+            ("h2", "H2"),
+            ("h3", "H3"),
+            ("h4", "H4"),
+        ],
+        blank=True,
+        required=True,
+        default="h1",
+    )
+
+    class Meta:
+        icon = "title"
+        template = "home/blocks/heading.html"
+        description = _("A heading on level 1..4")

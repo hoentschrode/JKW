@@ -5,11 +5,14 @@ from wagtail.blocks import (
     BooleanBlock,
     CharBlock,
     PageChooserBlock,
+    StreamBlock,
     StructBlock,
     StructValue,
 )
 from django.utils.translation import gettext_lazy as _
 from wagtail.documents.blocks import DocumentChooserBlock
+
+from .html import HeadingBlock, RichTextBlock
 
 
 class LinkStructValue(StructValue):
@@ -80,3 +83,10 @@ class FlyerSwiperBlock(StructBlock):
     class Meta:
         template = "home/blocks/flyer_swiper.html"
         icon = "resubmit"
+
+
+class BaseStreamBlock(StreamBlock):
+    """Basic stream block."""
+
+    heading = HeadingBlock()
+    paragraph = RichTextBlock()

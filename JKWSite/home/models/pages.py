@@ -3,7 +3,7 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, FieldRowPanel
-from home.blocks import LAYOUT_BLOCKS
+from home.blocks import HTML_BLOCKS, LAYOUT_BLOCKS
 from wagtail.documents import get_document_model
 
 
@@ -25,6 +25,8 @@ class HomePage(Page):
 
 
 class FlyerPage(Page):
+    """A page for a downloadable flyer."""
+
     subtitle = CharField(
         blank=True, verbose_name=_("Subtitle"), help_text=_("Additional sub title")
     )
@@ -67,6 +69,8 @@ class FlyerPage(Page):
 
 
 class FlyerIndexPage(Page):
+    """Index page showing all flyers."""
+
     introduction = TextField(
         verbose_name=_("Introduction"),
         help_text=_("Text to describe the page"),
@@ -86,3 +90,12 @@ class FlyerIndexPage(Page):
 
     class Meta:
         verbose_name = _("Flyer index page")
+
+
+class StandardPage(Page):
+    """Simple page just using header, breadcrumb and footer."""
+
+    body = StreamField(HTML_BLOCKS, verbose_name=_("Page body"), blank=True)
+
+    content_panels = Page.content_panels + [FieldPanel("body")]
+    template = "home/pages/page.html"
