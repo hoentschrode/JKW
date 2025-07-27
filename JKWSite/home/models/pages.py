@@ -60,7 +60,7 @@ class FlyerPage(Page):
 
     parent_page_types = ["FlyerIndexPage"]
     subpage_types = []
-    template = "home/pages/page.html"
+    template = "home/pages/flyer.html"
 
     class Meta:
         verbose_name = _("Flyer page")
@@ -75,6 +75,14 @@ class FlyerIndexPage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("introduction")]
     subpage_types = ["FlyerPage"]
+    template = "home/pages/flyer_index.html"
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context["flyers"] = (
+            FlyerPage.objects.descendant_of(self).live().order_by("path")
+        )
+        return context
 
     class Meta:
         verbose_name = _("Flyer index page")

@@ -1,0 +1,24 @@
+{% extends "home/pages/page.html" %}
+{% load i18n wagtailcore_tags wagtailimages_tags %}
+{% comment %}
+Flyer index page
+{% endcomment %}
+{% block content %}
+{{ block.super }}
+<div class="container">
+  {% if page.introduction %}
+  <div class="col">
+    <p>{{ page.introduction }}</p>
+  </div>
+  {% endif %}
+  <div class="flyer-index">
+    <div class="row gx-3 gy-3">
+      {% for flyer in flyers %}
+        <div class="col-md-6 flyer-index-item">
+          {% include "home/includes/flyer_item.html" with flyer=flyer grid=True %}
+        </div>
+      {% endfor %}
+      </div>
+  </div>
+</div>
+{% endblock %}

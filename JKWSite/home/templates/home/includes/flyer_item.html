@@ -1,0 +1,14 @@
+{% comment %}
+A single flyer element
+{% endcomment %}
+{% load i18n wagtailimages_tags %}
+<div class="card{% if grid == True %} h-100{% endif %} flyer-index-item">
+    {% picture flyer.image format-{avif,webp,png} fill-500x500-c100 class="card-img-top" %}
+    <div class="card-body">
+      <h1 class="card-title">{{ flyer.title }}</h1>
+      <p class="card-text">{{ flyer.description }}</p>
+    </div>
+    <div class="card-footer">
+      <a href="{{ flyer.document.url }}" class="btn btn-primary">{% translate "Download Flyer"%}</a>
+    </div>
+</div>

@@ -568,3 +568,15 @@ footer {
     }
   }
 }
+
+.flyer-index {
+  .flyer-index-item {
+    img {
+      width: auto;
+      height: auto;
+    }
+    .card-footer {
+      background-color: $color-white;
+    }
+  }
+}
