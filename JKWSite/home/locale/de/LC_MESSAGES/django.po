@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-26 14:13+0000\n"
+"POT-Creation-Date: 2025-08-25 11:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,46 +18,68 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/blocks/content.py:54
+#: home/blocks/base.py:8
+msgid "Custom element id"
+msgstr ""
+
+#: home/blocks/base.py:11
+#, fuzzy
+#| msgid "Contact settings"
+msgid "Advanced settings"
+msgstr "Kontaktdaten"
+
+#: home/blocks/content.py:57
 msgid "Page link"
 msgstr ""
 
-#: home/blocks/content.py:58 home/blocks/layout.py:98
+#: home/blocks/content.py:61 home/blocks/layout.py:98
 msgid "Title"
 msgstr ""
 
-#: home/blocks/content.py:59
+#: home/blocks/content.py:62
 msgid "Leave empty for document/page links to use their title."
 msgstr ""
 
-#: home/blocks/content.py:62
+#: home/blocks/content.py:65
 msgid "Open in new page"
 msgstr ""
 
-#: home/blocks/content.py:64
+#: home/blocks/content.py:67
 msgid "Document link"
 msgstr ""
 
-#: home/blocks/content.py:65
+#: home/blocks/content.py:68
 msgid "Download document"
 msgstr ""
 
-#: home/blocks/content.py:67
+#: home/blocks/content.py:70
 msgid "External URL"
 msgstr ""
 
-#: home/blocks/content.py:72 home/blocks/layout.py:55
+#: home/blocks/content.py:75 home/blocks/layout.py:55
 msgid "Link"
 msgstr ""
 
-#: home/blocks/html.py:13
+#: home/blocks/html.py:14
 msgid "Bootstrap-icon name"
 msgstr ""
 
-#: home/blocks/html.py:21
+#: home/blocks/html.py:22
 msgid ""
 "Insert a boostrap icon name here. Look up: <a href=\"https://icons."
 "getbootstrap.com/\" target=\"_blank\">here</a>"
+msgstr ""
+
+#: home/blocks/html.py:29
+msgid "Heading text"
+msgstr ""
+
+#: home/blocks/html.py:32
+msgid "Select header level"
+msgstr ""
+
+#: home/blocks/html.py:46
+msgid "A heading on level 1..4"
 msgstr ""
 
 #: home/blocks/layout.py:20
@@ -132,7 +154,7 @@ msgstr ""
 msgid "Flyer"
 msgstr ""
 
-#: home/blocks/layout.py:99 home/models/pages.py:29
+#: home/blocks/layout.py:99 home/models/pages.py:31
 msgid "Subtitle"
 msgstr ""
 
@@ -156,37 +178,41 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-#: home/models/pages.py:29
+#: home/models/pages.py:31
 msgid "Additional sub title"
 msgstr ""
 
-#: home/models/pages.py:37
+#: home/models/pages.py:39
 msgid "Descriptive sample image (cropped to be rectangled)."
 msgstr "Vorschaubild (wird quaratisch zugeschnitten)"
 
-#: home/models/pages.py:47
+#: home/models/pages.py:49
 msgid "Description"
 msgstr "Beschreibung"
 
-#: home/models/pages.py:47
+#: home/models/pages.py:49
 msgid "Short description text"
 msgstr "Kurzer Teaser Text"
 
-#: home/models/pages.py:66
+#: home/models/pages.py:68
 msgid "Flyer page"
 msgstr "Flyer-Seite"
 
-#: home/models/pages.py:71
+#: home/models/pages.py:75
 msgid "Introduction"
 msgstr "Text"
 
-#: home/models/pages.py:72
+#: home/models/pages.py:76
 msgid "Text to describe the page"
 msgstr "Kurzer Text zur Einführung"
 
-#: home/models/pages.py:80
+#: home/models/pages.py:92
 msgid "Flyer index page"
 msgstr "Flyerübersicht-Seite"
+
+#: home/models/pages.py:98
+msgid "Page body"
+msgstr ""
 
 #: home/models/settings.py:16
 msgid "Name"
@@ -243,6 +269,10 @@ msgstr "Kontaktdaten"
 #: home/models/settings.py:87 home/models/settings.py:93
 #: home/templates/home/includes/footer.html:42
 msgid "Opening hours"
+msgstr "Öffnungszeiten"
+
+#: home/templates/home/includes/flyer_item.html:12
+msgid "Download Flyer"
 msgstr ""
 
 #: home/templates/home/includes/footer.html:28

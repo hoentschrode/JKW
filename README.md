@@ -40,7 +40,7 @@ To _collect/update_ all translatable items run
 python manage.py makemessages --locale de
 ```
 
-Then edit the locale files and add (or update) your translations.
+Then edit the locale files (\*.po) and add (or update) your translations.
 
 Finally, the locale file must be compiled using
 
