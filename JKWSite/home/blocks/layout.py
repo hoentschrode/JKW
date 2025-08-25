@@ -56,6 +56,16 @@ class TileBlock(ColumnMixin, blocks.StructBlock):
 
     class Meta:
         template = "home/blocks/tile.html"
+        group = _("Tiles")
+
+
+class TileImageBlock(ColumnMixin, blocks.StructBlock):
+    image = ImageChooserBlock(required=False, label=_("Image"))
+
+    class Meta:
+        template = "home/blocks/tile_image.html"
+        icon = "image"
+        group = _("Tiles")
 
 
 class CardBlock(ColumnMixin, blocks.StructBlock):
@@ -65,6 +75,16 @@ class CardBlock(ColumnMixin, blocks.StructBlock):
 
     class Meta:
         template = "home/blocks/card.html"
+        group = _("Cards")
+
+
+class CardImageBlock(ColumnMixin, blocks.StructBlock):
+    image = ImageChooserBlock(required=False, label=_("Image"))
+
+    class Meta:
+        template = "home/blocks/card_image.html"
+        icon = "image"
+        group = _("Cards")
 
 
 class RowBlock(ColumnMixin, blocks.StructBlock):
@@ -72,19 +92,29 @@ class RowBlock(ColumnMixin, blocks.StructBlock):
         local_blocks = [
             (
                 "columns",
-                blocks.StreamBlock([("tile", TileBlock()), ("card", CardBlock())]),
-            )
+                blocks.StreamBlock(
+                    [
+                        ("tile", TileBlock()),
+                        ("tile_image", TileImageBlock()),
+                        ("card", CardBlock()),
+                        ("card_image", CardImageBlock()),
+                    ]
+                ),
+            ),
         ]
         super().__init__(local_blocks, search_index, **kwargs)
 
     class Meta:
         template = "home/blocks/row.html"
+        icon = "table"
 
 
 class GridBlock(blocks.StreamBlock):
     row = RowBlock()
     tile = TileBlock()
+    tile_image = TileImageBlock()
     card = CardBlock()
+    card_image = CardImageBlock()
 
     class Meta:
         template = "home/blocks/grid.html"

@@ -1,0 +1,7 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
+  <div class="card-image-block gy-4 d-flex flex-column align-items-center justify-content-top">
+    {% picture self.image format-{avif,webp,png} fill-730x600-c100 %}
+  </div>
+</div>
+

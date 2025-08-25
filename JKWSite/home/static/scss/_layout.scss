@@ -444,6 +444,13 @@ footer {
   }
 }
 
+.block-row {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .tile-block {
   padding: 2rem;
   background: $color-primary;
@@ -465,6 +472,18 @@ footer {
       color: $color-primary;
       background: $color-white;
       transition: 0.3s;
+    }
+  }
+}
+
+.tile-image-block {
+  @extend .tile-block;
+  padding: 0;
+  picture {
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
     }
   }
 }
@@ -504,6 +523,20 @@ footer {
     font-weight: 400;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+}
+
+.card-image-block {
+  @extend .card-block;
+  padding: 0;
+  border: none;
+  picture {
+    img {
+      border-radius: 2rem;
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
+    }
   }
 }
 
