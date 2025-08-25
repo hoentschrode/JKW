@@ -1,7 +1,7 @@
 {% comment %}
 Simple heading
 {% endcomment %}
-{% if self.level == "h1" %}<h1>{{ self.text }}</h1>{% endif %}
-{% if self.level == "h2" %}<h1>{{ self.text }}</h2>{% endif %}
-{% if self.level == "h3" %}<h1>{{ self.text }}</h3>{% endif %}
-{% if self.level == "h4" %}<h1>{{ self.text }}</h4>{% endif %}
+{% if self.level == "h1" %}<h1{% if self.settings.custom_element_id %} id="{{ self.settings.custom_element_id }}"{% endif %}>{{ self.text }}</h1>{% endif %}
+{% if self.level == "h2" %}<h2{% if self.settings.custom_element_id %} id="{{ self.settings.custom_element_id }}"{% endif %}>{{ self.text }}</h2>{% endif %}
+{% if self.level == "h3" %}<h3{% if self.settings.custom_element_id %} id="{{ self.settings.custom_element_id }}"{% endif %}>{{ self.text }}</h3>{% endif %}
+{% if self.level == "h4" %}<h4{% if self.settings.custom_element_id %} id="{{ self.settings.custom_element_id }}"{% endif %}>{{ self.text }}</h4>{% endif %}

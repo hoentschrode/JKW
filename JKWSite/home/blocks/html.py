@@ -2,13 +2,14 @@
 
 from wagtail import blocks
 from django.utils.translation import gettext_lazy as _
+from .base import BaseStructBlock
 
 
 class RichTextBlock(blocks.RichTextBlock):
     pass
 
 
-class IconBlock(blocks.StructBlock):
+class IconBlock(BaseStructBlock):
     icon_name = blocks.CharBlock(
         required=False, label=_("Bootstrap-icon name"), max_length=100
     )
@@ -22,7 +23,7 @@ class IconBlock(blocks.StructBlock):
         )
 
 
-class HeadingBlock(blocks.StructBlock):
+class HeadingBlock(BaseStructBlock):
     """Custom heading block for H1...H4 elements."""
 
     text = blocks.CharBlock(required=True, label=_("Heading text"))
@@ -43,3 +44,4 @@ class HeadingBlock(blocks.StructBlock):
         icon = "title"
         template = "home/blocks/heading.html"
         description = _("A heading on level 1..4")
+        label_format = "{level}: {text}"
