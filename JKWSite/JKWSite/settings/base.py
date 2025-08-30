@@ -181,6 +181,10 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
 WAGTAIL_SITE_NAME = "JKWSite"
 WAGTAIL_I18N_ENABLED = True
 WAGTAIL_CONTENT_LANGUAGES = LANGUAGES = [("de", "Deutsch")]
+
+# Silence wagtailmenus warnings, refer to https://github.com/jazzband/wagtailmenus/issues/464
+SILENCED_SYSTEM_CHECKS = ["wagtailadmin.W002"]
+
 # Search
 # https://docs.wagtail.org/en/stable/topics/search/backends.html
 WAGTAILSEARCH_BACKENDS = {
