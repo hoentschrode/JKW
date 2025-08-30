@@ -53,6 +53,12 @@ class TileBlock(ColumnMixin, blocks.StructBlock):
     headline = blocks.CharBlock(required=False, max_length=200, label=_("Headline"))
     body = blocks.RichTextBlock(required=False, features=["bold", "italic"])
     link = LinkBlock(required=False, label=_("Link"))
+    theme = blocks.ChoiceBlock(
+        choices=[("default", _("Default theme")), ("green", _("Green theme"))],
+        default="default",
+        required=False,
+        label=_("Tile theme"),
+    )
 
     class Meta:
         template = "home/blocks/tile.html"

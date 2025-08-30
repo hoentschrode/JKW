@@ -1,0 +1,13 @@
+// Everything related to themes
+
+.tile-block {
+  &.theme-default {
+    background: $color-primary;
+    color: $color-white;
+  }
+
+  &.theme-green {
+    background: rgba(19, 110, 11, 0.8);
+    color: $color-white;
+  }
+}
