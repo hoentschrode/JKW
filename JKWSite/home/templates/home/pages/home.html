@@ -4,12 +4,13 @@ Homepage - basic page without breadcrumbs.
 {% endcomment %}
 {% load static wagtailcore_tags jkwtags %}
 {% block extra_css %}
-        <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />
-        {% endblock extra_css%}
+  {{block.super}}
+  <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />
+{% endblock extra_css%}
 {% block content %}
 <main>
   {% for block in page.body %}
-    <section {% if forloop.counter0|divisibleby:2 %}class="highlighted"{% endif %}>
+    <section class="aos-init aos-animate{% if forloop.counter0|divisibleby:2 %}highlighted{% endif %}" data-aos="fade-up">
       {% include_block block %}
     </section>
   {% endfor %}

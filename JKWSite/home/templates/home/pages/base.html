@@ -12,6 +12,7 @@ General base page, master for all sub pages!
 {% endblock %}
 
 {% block extra_css %}
+  <link href="{% static 'css/aos.css' %}" rel="stylesheet">
 {% endblock extra_css %}
 
 {% block header %}{% include "home/includes/header.html" %}{% endblock %}
@@ -22,4 +23,5 @@ General base page, master for all sub pages!
 {% block extra_js %}
   <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/aos.js' %}"></script>
 {% endblock %}
