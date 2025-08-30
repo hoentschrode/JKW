@@ -4,7 +4,12 @@
 General base page, master for all sub pages!
 
 {% endcomment %}
-{% load static wagtailcore_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_header %}
+{% image settings.home.ContactSettings.logo_image format-ico as favicon %}
+<link rel="icon" type="image/x-icon" href="{{favicon.url}}"/>
+{% endblock %}
 
 {% block extra_css %}
 {% endblock extra_css %}
