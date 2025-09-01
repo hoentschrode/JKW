@@ -1,9 +1,0 @@
-{% load wagtailcore_tags %}
-<div class="container-fluid">
-  <div class="swiper" id="swiper_{{ block.block.id }}">
-    <div class="swiper-wrapper">
-      {% for block in self %} {% include_block block %} {% endfor %}
-    </div>
-    <div class="swiper-pagination" id="{{ block.block.id }}_pagination"></div>
-  </div>
-</div>

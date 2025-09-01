@@ -7,9 +7,6 @@ from django.utils.translation import gettext_lazy as _
 import logging
 from .content import LinkBlock
 from .html import IconBlock
-from typing import List
-import random
-import string
 
 log = logging.getLogger(__name__)
 
@@ -137,58 +134,3 @@ class FlyerSlideBlock(blocks.StructBlock):
 
     class Meta:
         template = "home/blocks/flyer_slide.html"
-
-
-class SwiperBlock(blocks.StreamBlock):
-    flyer_slide_block = FlyerSlideBlock()
-
-    def __init__(self, local_blocks=None, search_index=True, **kwargs):
-        self._id = None
-        super().__init__(local_blocks, search_index, **kwargs)
-
-    @property
-    def id(self) -> str:
-        if self._id is None:
-            self._id = (
-                "".join(
-                    random.choice(string.ascii_letters + string.digits)
-                    for _ in range(20)
-                )
-                + "id"
-            )
-        return self._id
-
-    @property
-    def extra_js_static_libs(self) -> List[str]:
-        return ["js/swiper-bundle.min.js"]
-
-    @property
-    def inline_js(self) -> List[str]:
-        return [
-            f"""
-            const swiper_{self.id} = new Swiper('#swiper_{self.id}', {{
-              speed: 600,
-              loop: true,
-              //autoplay: {{
-              //  delay: 5000,
-              //  disableOnInteraction: false
-             // }},
-              pagination: {{
-                el: '#{self.id}_pagination',
-                type: 'bullets',
-                clicbable: true
-              }},
-              slidesPerView: 1,
-              breakpoints:{{
-                768: {{slidesPerView:3}},
-                1200: {{slidesPerView:4}}
-              }}
-            }});
-        """
-        ]
-
-    def render(self, value, context=None):
-        return super().render(value, context)
-
-    class Meta:
-        template = "home/blocks/swiper.html"

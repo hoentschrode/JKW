@@ -1,2 +1,23 @@
-{% load wagtailcore_tags jkwtags %}
-{% get_flyer_swiper %}
+{% load wagtailcore_tags wagtailimages_tags jkwtags %}
+<div class="container-fluid">
+  <div class="swiper" id="{{self.id}}">
+    <div class="swiper-wrapper">
+      {% get_flyers %}
+      {% for flyer in flyers %}
+        <div class="swiper-slide flyer-slide">
+            {% picture flyer.image format-{avif,webp,png} fill-500x500-c100 %}
+            <div class="overlay d-flex flex-column">
+              {% if flyer.title %}<h1>{{ flyer.title }}</h1>{% endif %}
+              {% if flyer.subtitle %}<h2>{{ flyer.subtitle }}</h2>{% endif %}
+              {% if flyer.teaser_text %}{{ flyer.teaser_text|richtext }}{% endif %}
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-pagination">
+    </div>
+  </div>
+</div>
+{% add_to_extra_js_on_dom_ready self.get_js_initializer %}
+
+

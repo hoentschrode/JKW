@@ -1,0 +1,13 @@
+{% load wagtailcore_tags wagtailimages_tags jkwtags %}
+<div class="swiper" id="{{ self.get_id }}">
+  <div class="img-overlay position-absolute no-mobile">Text 123</div>
+  <div class="swiper-wrapper">
+    {% for slide in self.carousel.carousel_slides.all %}
+      <div class="swiper-slide">
+        {% picture slide.image format-{avif,webp,png} fill-500x500-c100  %}
+      </div>  
+    {% endfor %}
+  </div>
+</div>
+{% add_to_extra_js_on_dom_ready self.get_js_initializer %}
+

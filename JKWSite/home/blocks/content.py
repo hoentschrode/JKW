@@ -11,7 +11,9 @@ from wagtail.blocks import (
 )
 from django.utils.translation import gettext_lazy as _
 from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 
+from home.blocks.base import BaseStructBlock, BaseStructValue
 from .html import HeadingBlock, RichTextBlock
 
 
@@ -77,12 +79,27 @@ class LinkBlock(StructBlock):
         value_class = LinkStructValue
 
 
-class FlyerSwiperBlock(StructBlock):
+class FlyerSwiperBlockValue(BaseStructValue):
+    def get_js_initializer(self) -> str:
+        return f"""
+            _ = new Swiper('#{self.id}', {{
+                speed:600, 
+                loop:true,
+                autoplay: {{ delay:5000, disableOnInteraction:false }},
+                pagination: {{el:'#{self.id} > .swiper-pagination', type:'bullets',clickable:true}},
+                slidesPerView:'auto'
+
+            }});
+        """.replace("\n", "")
+
+
+class FlyerSwiperBlock(BaseStructBlock):
     """Shows all flyers as swiper."""
 
     class Meta:
         template = "home/blocks/flyer_swiper.html"
         icon = "resubmit"
+        value_class = FlyerSwiperBlockValue
 
 
 class BaseStreamBlock(StreamBlock):
@@ -90,3 +107,32 @@ class BaseStreamBlock(StreamBlock):
 
     heading = HeadingBlock()
     paragraph = RichTextBlock()
+
+
+class CarouselBlockValue(BaseStructValue):
+    def get_js_initializer(self) -> str:
+        return f"""
+            _ = new Swiper('#{self.id}', {{
+                pagination:{{}}, 
+                loop:true, 
+                effect:'fade', 
+                lazy:true,
+                centeredSlides:true,
+                autoplay: {{
+                  delay:5000,
+                  disableOnInteraction: false
+                }}
+            }});
+        """.replace("\n", "")
+
+
+class CarouselBlock(BaseStructBlock):
+    """Carousel block to choose carousel snippet."""
+
+    carousel = SnippetChooserBlock("home.Carousel")
+
+    class Meta:
+        icon = "image"
+        label = _("Carousel")
+        template = "home/blocks/carousel.html"
+        value_class = CarouselBlockValue

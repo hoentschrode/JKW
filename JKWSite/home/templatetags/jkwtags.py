@@ -35,9 +35,34 @@ def get_footer_extra_slot(context):
     return {"extra_slot": extra_slot}
 
 
-@register.inclusion_tag("home/includes/flyer_swiper.html", takes_context=True)
-def get_flyer_swiper(context):
+@register.simple_tag(takes_context=True)
+def get_flyers(context):
+    """Retrieves all flyers and injects them into current context."""
     flyers = context.get("flyers", "")
     if not flyers:
         flyers = FlyerPage.objects.filter(live=True).all()
-    return {"flyers": flyers}
+    context["flyers"] = flyers
+    return ""
+
+
+@register.simple_tag(takes_context=True)
+def add_to_extra_js(context, extra_js):
+    page = context.get("page")
+    if page:
+        if hasattr(page, "extra_js"):
+            page.extra_js.append(extra_js)
+        else:
+            page.extra_js = [extra_js]
+
+    return ""
+
+
+@register.simple_tag(takes_context=True)
+def add_to_extra_js_on_dom_ready(context, extra_js_on_dom_ready):
+    page = context.get("page")
+    if page:
+        if hasattr(page, "extra_js_on_dom_ready"):
+            page.extra_js_on_dom_ready.append(extra_js_on_dom_ready)
+        else:
+            page.extra_js_on_dom_ready = [extra_js_on_dom_ready]
+    return ""

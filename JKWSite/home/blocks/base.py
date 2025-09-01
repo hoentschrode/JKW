@@ -1,5 +1,7 @@
 from wagtail import blocks
 from django.utils.translation import gettext_lazy as _
+import random
+import string
 
 
 class AdvancedSettingsBlock(blocks.StructBlock):
@@ -24,3 +26,21 @@ class BaseStructBlock(blocks.StructBlock):
 
         local_blocks += (("settings", self.advanced_settings_class()),)
         super().__init__(local_blocks, search_index, **kwargs)
+
+
+class BaseStructValue(blocks.StructValue):
+    """Custom struct value to inject element id."""
+
+    id = "?"
+
+    def __init__(self, block, *args):
+        super().__init__(block, *args)
+        # Generate id and ensure, first char is a letter!
+        self.id = "".join(
+            random.choice(string.ascii_letters)
+            + random.choice(string.ascii_letters + string.digits)
+            for _ in range(19)
+        )
+
+    def get_id(self) -> str:
+        return self.id
