@@ -1,0 +1,24 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+{% if self.background_image %}
+  {% image self.background_image format-png fill-500x500-c100 as backgroundImage %}
+  <style>
+    :root {
+      --heroBgImage: url('{{backgroundImage.url}}');
+    }
+  </style>
+{% endif %}
+<div class="container hero">
+  Hero block
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  XXX
+</div>

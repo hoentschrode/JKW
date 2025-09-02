@@ -11,6 +11,7 @@ from wagtail.blocks import (
 )
 from django.utils.translation import gettext_lazy as _
 from wagtail.documents.blocks import DocumentChooserBlock
+from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 
 from home.blocks.base import BaseStructBlock, BaseStructValue
@@ -136,3 +137,18 @@ class CarouselBlock(BaseStructBlock):
         label = _("Carousel")
         template = "home/blocks/carousel.html"
         value_class = CarouselBlockValue
+
+
+class HeroBlock(BaseStructBlock):
+    """Hero block."""
+
+    background_image = ImageChooserBlock(
+        required=False,
+        label=_("Background image"),
+        help_text=_("Hero background will be blurred by default"),
+    )
+
+    class Meta:
+        icon = "image"
+        label = _("Hero")
+        template = "home/blocks/hero.html"

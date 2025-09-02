@@ -610,3 +610,20 @@ footer {
     }
   }
 }
+
+.hero {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: var(--heroBgImage);
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1; /* Keep it behind the content */
+    transform: scale(1.15); /* No White Spaces from blur */
+  }
+}

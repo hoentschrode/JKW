@@ -50,6 +50,9 @@ section {
   &.highlighted {
     background-color: #eee;
   }
+  &:first-of-type {
+    padding-top: 90px;
+  }
 }
 
 .btn {

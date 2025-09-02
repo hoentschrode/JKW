@@ -10,7 +10,7 @@ Homepage - basic page without breadcrumbs.
 {% block content %}
 <main>
   {% for block in page.body %}
-    <section class="aos-init aos-animate{% if forloop.counter0|divisibleby:2 %}highlighted{% endif %}" data-aos="fade-up">
+    <section class="aos-init aos-animate{% if forloop.counter0|divisibleby:2 %} highlighted{% endif %}" data-aos="fade-up">
       {% include_block block %}
     </section>
   {% endfor %}

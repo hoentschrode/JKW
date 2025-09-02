@@ -1,4 +1,4 @@
-from .content import CarouselBlock, FlyerSwiperBlock, LinkBlock
+from .content import CarouselBlock, FlyerSwiperBlock, HeroBlock, LinkBlock
 from .layout import GridBlock
 from .html import HeadingBlock, RichTextBlock
 
@@ -13,4 +13,5 @@ LAYOUT_BLOCKS = [
     ("row", GridBlock()),
     ("flyer_swiper", FlyerSwiperBlock()),
     ("carousel", CarouselBlock()),
+    ("hero", HeroBlock()),
 ]
