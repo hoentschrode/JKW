@@ -5,13 +5,61 @@ from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 from django.utils.translation import gettext_lazy as _
 import logging
+
+from home.blocks.base import BaseStructBlock
 from .content import LinkBlock
 from .html import IconBlock
 
 log = logging.getLogger(__name__)
 
 
-class ColumnMixin(blocks.StructBlock):
+class TileBlock(blocks.StructBlock):
+    headline = blocks.CharBlock(required=False, max_length=200, label=_("Headline"))
+    body = blocks.RichTextBlock(required=False, features=["bold", "italic"])
+    link = LinkBlock(required=False, label=_("Link"))
+    theme = blocks.ChoiceBlock(
+        choices=[("default", _("Default theme")), ("green", _("Green theme"))],
+        default="default",
+        required=False,
+        label=_("Tile theme"),
+    )
+
+    class Meta:
+        template = "home/blocks/tile.html"
+        group = _("Tiles")
+
+
+class TileImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=False, label=_("Image"))
+
+    class Meta:
+        template = "home/blocks/tile_image.html"
+        icon = "image"
+        group = _("Tiles")
+
+
+class CardBlock(blocks.StructBlock):
+    icon = IconBlock()
+    headline = blocks.CharBlock(required=False, max_length=200, label=_("Headline"))
+    body = blocks.RichTextBlock(required=False, features=["bold", "italic"])
+
+    class Meta:
+        template = "home/blocks/card.html"
+        group = _("Cards")
+
+
+class CardImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=False, label=_("Image"))
+
+    class Meta:
+        template = "home/blocks/card_image.html"
+        icon = "image"
+        group = _("Cards")
+
+
+class ColumnBlock(BaseStructBlock):
+    """Block for a single column of grid/row block."""
+
     column_size = blocks.ChoiceBlock(
         choices=[
             ("", _("Automatic size")),
@@ -45,52 +93,44 @@ class ColumnMixin(blocks.StructBlock):
         label=_("Column breakpoint"),
     )
 
-
-class TileBlock(ColumnMixin, blocks.StructBlock):
-    headline = blocks.CharBlock(required=False, max_length=200, label=_("Headline"))
-    body = blocks.RichTextBlock(required=False, features=["bold", "italic"])
-    link = LinkBlock(required=False, label=_("Link"))
     theme = blocks.ChoiceBlock(
-        choices=[("default", _("Default theme")), ("green", _("Green theme"))],
-        default="default",
-        required=False,
-        label=_("Tile theme"),
+        choices=[
+            ("transparent", _("Transparent (no colors)")),
+            ("white", _("Black text on white")),
+        ],
+        default="transparent",
+        required=True,
+        label=_("Theme"),
     )
 
-    class Meta:
-        template = "home/blocks/tile.html"
-        group = _("Tiles")
+    round_borders = blocks.BooleanBlock(
+        default=False, required=False, label=_("Rounded borders")
+    )
 
-
-class TileImageBlock(ColumnMixin, blocks.StructBlock):
-    image = ImageChooserBlock(required=False, label=_("Image"))
-
-    class Meta:
-        template = "home/blocks/tile_image.html"
-        icon = "image"
-        group = _("Tiles")
-
-
-class CardBlock(ColumnMixin, blocks.StructBlock):
-    icon = IconBlock()
-    headline = blocks.CharBlock(required=False, max_length=200, label=_("Headline"))
-    body = blocks.RichTextBlock(required=False, features=["bold", "italic"])
-
-    class Meta:
-        template = "home/blocks/card.html"
-        group = _("Cards")
-
-
-class CardImageBlock(ColumnMixin, blocks.StructBlock):
-    image = ImageChooserBlock(required=False, label=_("Image"))
+    def __init__(self, local_blocks=None, search_index=True, **kwargs):
+        stream_local_blocks = [
+            (
+                "content",
+                blocks.StreamBlock(
+                    [
+                        ("row", RowBlock()),
+                        ("tile", TileBlock()),
+                        ("card", CardBlock()),
+                    ]
+                    + local_blocks
+                    if local_blocks
+                    else [],
+                ),
+            )
+        ]
+        super().__init__(stream_local_blocks, search_index, **kwargs)
 
     class Meta:
-        template = "home/blocks/card_image.html"
-        icon = "image"
-        group = _("Cards")
+        label = _("Column block")
+        template = "home/blocks/column.html"
 
 
-class RowBlock(ColumnMixin, blocks.StructBlock):
+class RowBlock(blocks.StructBlock):
     def __init__(self, local_blocks=None, search_index=True, **kwargs):
         local_blocks = [
             (
@@ -112,12 +152,30 @@ class RowBlock(ColumnMixin, blocks.StructBlock):
         icon = "table"
 
 
-class GridBlock(blocks.StreamBlock):
-    row = RowBlock()
-    tile = TileBlock()
-    tile_image = TileImageBlock()
-    card = CardBlock()
-    card_image = CardImageBlock()
+class GridBlock(BaseStructBlock):
+    spacing = blocks.ChoiceBlock(
+        choices=[("1", "1"), ("2", "2"), ("3", "3"), ("4", "4")],
+        default="4",
+        required=True,
+        label=_("Spacing"),
+        help_text=_("Gap between columns"),
+    )
+
+    def __init__(self, local_blocks=None, search_index=True, **kwargs):
+        stream_local_blocks = [
+            (
+                "columns",
+                blocks.StreamBlock(
+                    [
+                        ("column", ColumnBlock(local_blocks)),
+                    ]
+                ),
+            )
+        ]
+        super().__init__(stream_local_blocks, search_index, **kwargs)
+
+    # tile_image = TileImageBlock()
+    # card_image = CardImageBlock()
 
     class Meta:
         template = "home/blocks/grid.html"

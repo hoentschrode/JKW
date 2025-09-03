@@ -1,8 +1,6 @@
 {% load wagtailcore_tags %}
-<div class="col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
-  <div class="card-block gy-4 d-flex flex-column align-items-center justify-content-top">
+  <div class="card-block d-flex flex-column align-items-center justify-content-top">
     {% if self.icon.icon_name %}{% include_block self.icon %}{% else %}<div class="no-icon"></div>{% endif %}
     {% if self.headline %}<h1>{{ self.headline }}</h1>{% endif %}
     {% if self.body %}{{ self.body|richtext }}{% endif %}
   </div>
-</div>

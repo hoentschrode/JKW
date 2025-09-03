@@ -4,6 +4,7 @@ from typing import Optional
 from wagtail.blocks import (
     BooleanBlock,
     CharBlock,
+    ChoiceBlock,
     PageChooserBlock,
     StreamBlock,
     StructBlock,
@@ -131,6 +132,12 @@ class CarouselBlock(BaseStructBlock):
     """Carousel block to choose carousel snippet."""
 
     carousel = SnippetChooserBlock("home.Carousel")
+    text = CharBlock(
+        required=False,
+        max_length=500,
+        label=_("Overlay text"),
+        help_text=_("Static overlay text for all slides"),
+    )
 
     class Meta:
         icon = "image"
@@ -147,6 +154,10 @@ class HeroBlock(BaseStructBlock):
         label=_("Background image"),
         help_text=_("Hero background will be blurred by default"),
     )
+
+    def __init__(self, local_blocks=None, search_index=True, **kwargs):
+        local_blocks = [("content", StreamBlock(local_blocks))]
+        super().__init__(local_blocks, search_index, **kwargs)
 
     class Meta:
         icon = "image"

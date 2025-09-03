@@ -11,3 +11,14 @@
     color: $color-white;
   }
 }
+
+.column {
+  &.theme-transparent {
+    background-color: rgba(0, 0, 0, 0);
+    color: #000;
+  }
+  &.theme-white {
+    background-color: #fff;
+    color: #000;
+  }
+}

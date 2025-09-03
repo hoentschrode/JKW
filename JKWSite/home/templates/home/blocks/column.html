@@ -1,0 +1,7 @@
+
+{% load wagtailcore_tags %}
+<div class="column theme-{{ self.theme }} {% if self.round_borders %}rounded{% endif %} col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
+  {% for block in self.content %}
+    {% include_block block %}
+  {% endfor %}
+</div>
