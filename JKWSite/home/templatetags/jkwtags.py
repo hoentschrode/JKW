@@ -46,13 +46,14 @@ def get_flyers(context):
 
 
 @register.simple_tag(takes_context=True)
-def add_to_extra_js(context, extra_js):
+def add_to_extra_js(context, extra_js: str) -> str:
+    """Adds a js script to the page."""
     page = context.get("page")
     if page:
         if hasattr(page, "extra_js"):
-            page.extra_js.append(extra_js)
+            page.extra_js.add(extra_js)
         else:
-            page.extra_js = [extra_js]
+            page.extra_js = {extra_js}
 
     return ""
 

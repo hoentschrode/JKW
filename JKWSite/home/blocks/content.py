@@ -4,7 +4,6 @@ from typing import Optional
 from wagtail.blocks import (
     BooleanBlock,
     CharBlock,
-    ChoiceBlock,
     PageChooserBlock,
     StreamBlock,
     StructBlock,

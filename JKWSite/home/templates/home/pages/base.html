@@ -21,10 +21,11 @@ General base page, master for all sub pages!
   {% include "home/includes/footer.html" %}
 {% endblock %}
 {% block extra_js %}
-  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/aos.js' %}"></script>
-  {% for js in page.extra_js %}{{js}}{% endfor %}
+  {% for js in page.extra_js %}
+    <script type="text/javascript" src="{% static js %}"></script>
+  {% endfor %}
   {% if page.extra_js_on_dom_ready %}
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', ()=>{
@@ -34,4 +35,5 @@ General base page, master for all sub pages!
       });
     </script>
   {% endif %}
+  <script type="text/javascript" src="{% static 'js/JKWSite.js' %}"></script>
 {% endblock %}
