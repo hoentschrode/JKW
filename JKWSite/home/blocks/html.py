@@ -30,14 +30,17 @@ class HeadingBlock(BaseStructBlock):
     level = blocks.ChoiceBlock(
         choices=[
             ("", _("Select header level")),
-            ("h1", "H1"),
-            ("h2", "H2"),
-            ("h3", "H3"),
-            ("h4", "H4"),
+            ("1", "H1"),
+            ("2", "H2"),
+            ("3", "H3"),
+            ("4", "H4"),
         ],
         blank=True,
         required=True,
-        default="h1",
+        default="1",
+    )
+    rainbow_effect = blocks.BooleanBlock(
+        required=False, default=False, label=_("Rainbow effect")
     )
 
     class Meta:

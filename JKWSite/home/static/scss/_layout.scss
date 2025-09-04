@@ -59,6 +59,62 @@ footer {
   }
 }
 
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-webkit-keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@-moz-keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rainbow-text {
+  background: linear-gradient(
+    270deg,
+    #b30000,
+    #cc5200,
+    #d6d600,
+    #2e7d00,
+    #007d7d,
+    #0059b3,
+    #4b007f
+  );
+  background-size: 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Für WebKit-basierte Browser */
+  -moz-background-clip: text; /* Für ältere Firefox-Versionen */
+  color: transparent; /* Als Fallback */
+  animation: rainbow-animation 10s ease infinite;
+}
+
 .breadcrumbs {
   padding: 15px 0;
   background: rgba(55, 55, 63, 0.05);
