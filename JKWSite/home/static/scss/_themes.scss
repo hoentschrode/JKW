@@ -22,3 +22,35 @@
     color: #000;
   }
 }
+
+.btn-primary {
+  &.theme-default {
+    color: #fff;
+    background-color: #4587a1;
+  }
+
+  &.theme-default-inverse {
+    color: #4587a1;
+    background-color: #fff;
+  }
+
+  &.theme-green {
+    color: #fff;
+    background-color: rgba(19, 110, 11, 0.4);
+    &:hover {
+      color: #000;
+      background-color: transparent !important;
+      border: rgba(19, 110, 11, 0.4) 1px solid;
+    }
+  }
+
+  &.theme-purple {
+    color: #fff;
+    background-color: rgba(156, 14, 199, 0.4);
+    &:hover {
+      color: #000;
+      background-color: transparent !important;
+      border: rgba(156, 14, 199, 0.4) 1px solid;
+    }
+  }
+}

@@ -4,6 +4,7 @@ from typing import Optional
 from wagtail.blocks import (
     BooleanBlock,
     CharBlock,
+    ChoiceBlock,
     PageChooserBlock,
     StreamBlock,
     StructBlock,
@@ -71,6 +72,26 @@ class LinkBlock(StructBlock):
     document_download_flag = BooleanBlock(required=False, label=_("Download document"))
     external_link_url = CharBlock(
         required=False, max_length=255, label=_("External URL")
+    )
+    theme = ChoiceBlock(
+        choices=[
+            ("default", _("Default")),
+            ("default-inverse", _("Inverted default")),
+            ("green", _("Green")),
+            ("purple", _("Purple")),
+        ],
+        default="default",
+        required=True,
+        label=_("Theme"),
+    )
+
+    icon_name = CharBlock(
+        required=False,
+        label=_("Bootstrap-icon name"),
+        max_length=100,
+        help_text=_(
+            'Insert a boostrap icon name here. Look up: <a href="https://icons.getbootstrap.com/" target="_blank">here</a>'
+        ),
     )
 
     class Meta:

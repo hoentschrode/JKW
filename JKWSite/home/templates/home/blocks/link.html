@@ -1,4 +1,4 @@
 {% load wagtailcore_tags %}
 {% if self.get_url %}
-  <a href="{{ self.get_url }}" title="{{ self.get_title|safe}}"{% if self.open_in_new_page_flag %} target="_blank"{% endif %}{% if self.document_download_flag%} download="{{ self.get_url }}"{% endif %} class="btn btn-primary">{{ self.get_title|safe }} <i class="bi bi-arrow-right"></i></a> 
+<a href="{{ self.get_url }}" title="{{ self.get_title|safe}}"{% if self.open_in_new_page_flag %} target="_blank"{% endif %}{% if self.document_download_flag%} download="{{ self.get_url }}"{% endif %} class="btn btn-primary theme-{{ self.theme }}">{% if self.icon_name %}<i class="bs {{ self.icon_name }}"></i> {% endif %}{{ self.get_title|safe }}{% if self.open_in_new_page_flag %} <i class="bi bi-arrow-right">{% endif %}</i></a> 
 {% endif %}
