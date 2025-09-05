@@ -115,13 +115,10 @@ class ColumnBlock(BaseStructBlock):
                 "content",
                 blocks.StreamBlock(
                     [
-                        ("row", RowBlock()),
                         ("tile", TileBlock()),
                         ("card", CardBlock()),
                     ]
-                    + local_blocks
-                    if local_blocks
-                    else [],
+                    + (local_blocks if local_blocks else []),
                 ),
             )
         ]
@@ -130,6 +127,7 @@ class ColumnBlock(BaseStructBlock):
     class Meta:
         label = _("Column block")
         template = "home/blocks/column.html"
+        icon = "doc-empty"
 
 
 class RowBlock(blocks.StructBlock):
@@ -139,10 +137,10 @@ class RowBlock(blocks.StructBlock):
                 "columns",
                 blocks.StreamBlock(
                     [
-                        ("tile", TileBlock()),
-                        ("tile_image", TileImageBlock()),
-                        ("card", CardBlock()),
-                        ("card_image", CardImageBlock()),
+                        (
+                            "column",
+                            ColumnBlock(),
+                        ),
                     ]
                 ),
             ),
@@ -151,7 +149,7 @@ class RowBlock(blocks.StructBlock):
 
     class Meta:
         template = "home/blocks/row.html"
-        icon = "table"
+        icon = "tasks"
 
 
 class GridBlock(BaseStructBlock):
@@ -185,6 +183,7 @@ class GridBlock(BaseStructBlock):
 
     class Meta:
         template = "home/blocks/grid.html"
+        icon = "table"
 
 
 class FlyerSlideBlock(blocks.StructBlock):

@@ -1,5 +1,5 @@
 {% load wagtailcore_tags %}
-  <div class="card-block d-flex flex-column align-items-center justify-content-top">
+  <div class="card-block d-flex flex-column align-items-center justify-content-top text-center">
     {% if self.icon.icon_name %}{% include_block self.icon %}{% else %}<div class="no-icon"></div>{% endif %}
     {% if self.headline %}<h1>{{ self.headline }}</h1>{% endif %}
     {% if self.body %}{{ self.body|richtext }}{% endif %}
