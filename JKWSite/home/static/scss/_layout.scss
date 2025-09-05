@@ -507,6 +507,22 @@ footer {
   }
 }
 
+.row-header {
+  h1 {
+    font-family: $font-primary;
+    text-transform: uppercase;
+    color: #7f7f90;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 1rem;
+  }
+  h2 {
+    color: $color-primary;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+}
+
 .column {
   padding-left: 2rem;
   padding-right: 2rem;

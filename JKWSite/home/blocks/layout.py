@@ -162,6 +162,10 @@ class GridBlock(BaseStructBlock):
         label=_("Spacing"),
         help_text=_("Gap between columns"),
     )
+    title_text = blocks.CharBlock(required=False, max_length=200, label=_("Title"))
+    subtitle_text = blocks.CharBlock(
+        required=False, max_length=200, label=_("Subtitle")
+    )
 
     def __init__(self, local_blocks=None, search_index=True, **kwargs):
         stream_local_blocks = [

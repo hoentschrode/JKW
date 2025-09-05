@@ -54,6 +54,20 @@ section {
   &:first-of-type {
     padding-top: 90px;
   }
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 0 0 8px 26px;
+      &:before {
+        content: "\F269";
+        font-family: bootstrap-icons;
+        font-size: 1.5rem;
+        font-weight: normal;
+        color: $color-primary;
+      }
+    }
+  }
 }
 
 .btn {

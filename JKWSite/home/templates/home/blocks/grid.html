@@ -1,5 +1,11 @@
 {% load wagtailcore_tags %}
 <div class="container">
+  {% if self.title_text or self.subtitle_text %}
+    <div class="row text-center row-header">
+      {% if self.title_text %}<h1>{{ self.title_text }}</h1>{% endif %}
+      {% if self.subtitle_text %}<h2>{{ self.subtitle_text }}</h2>{% endif %}
+    </div>
+  {% endif %}
   <div class="row gy-{{self.spacing}}">
     {% for block in self.columns %}
       {% include_block block %}
