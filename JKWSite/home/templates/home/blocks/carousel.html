@@ -1,12 +1,23 @@
-{% load wagtailcore_tags wagtailimages_tags jkwtags %}
+{% load wagtailcore_tags wagtailimages_tags i18n jkwtags %}
 <div class="swiper carousel" id="{{ self.get_id }}">
   {% if self.text %}
-  <div class="img-overlay position-absolute no-mobile">{{self.text}}</div>
+    <div class="img-overlay position-absolute no-mobile">{{self.text}}</div>
+  {% endif %}
+  {% if self.show_opening_hours %}
+    {% with openingHours=settings.home.OpeningHoursSettings %}
+    <div class="img-overlay position-absolute no-mobile">
+      <h1>
+        <i class="bi bi-clock icon"></i>
+        {% translate "Opening hours" %}
+      </h1>
+      {{ openingHours.opening_hours|richtext }}
+    </div>
+    {% endwith %}
   {% endif %}
   <div class="swiper-wrapper">
     {% for slide in self.carousel.carousel_slides.all %}
       <div class="swiper-slide">
-        {% picture slide.image format-{avif,webp,png} fill-800x800-c100  %}
+        {% picture slide.image format-{avif,webp,png} fill-700x500-c100  %}
       </div>  
     {% endfor %}
   </div>

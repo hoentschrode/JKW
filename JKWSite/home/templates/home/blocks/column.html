@@ -1,6 +1,9 @@
-
-{% load wagtailcore_tags %}
-<div class="column theme-{{ self.theme }} {% if self.round_borders %}rounded{% endif %} col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
+{% load wagtailcore_tags wagtailimages_tags %}
+<div class="column position-relative theme-{{ self.theme }} {% if self.round_borders %}rounded{% endif %} col{% if self.column_breakpoint %}-{{ self.column_breakpoint }}{% endif %}{% if self.column_size %}-{{ self.column_size }}{% endif %}">
+  {% if self.sticker_image %}
+    {% image self.sticker_image fill-250x250-c100 class="sticker" %}
+    <div class="sticker-spacer"></div>
+  {% endif %}
   {% for block in self.content %}
     {% include_block block %}
   {% endfor %}

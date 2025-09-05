@@ -158,6 +158,9 @@ class CarouselBlock(BaseStructBlock):
         label=_("Overlay text"),
         help_text=_("Static overlay text for all slides"),
     )
+    show_opening_hours = BooleanBlock(
+        required=False, default=False, label=_("Show opening hours")
+    )
 
     class Meta:
         icon = "image"

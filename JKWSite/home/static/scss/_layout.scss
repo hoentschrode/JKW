@@ -508,8 +508,20 @@ footer {
 }
 
 .column {
+  padding-left: 2rem;
+  padding-right: 2rem;
   &.rounded {
     border-radius: 30px !important;
+  }
+  img.sticker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    rotate: -10deg;
+    transform: translate(-45%, -65%);
+  }
+  .sticker-spacer {
+    height: 100px;
   }
 }
 
@@ -674,7 +686,6 @@ footer {
 }
 
 .carousel {
-  border-radius: 30px;
   .img-overlay {
     z-index: 1000;
     left: 20%;
@@ -692,6 +703,9 @@ footer {
     height: 100%;
     display: flex;
     justify-content: center;
+    img {
+      border-radius: 30px;
+    }
   }
 }
 
@@ -710,6 +724,7 @@ footer {
     z-index: -1; /* Keep it behind the content */
     transform: scale(1.15); /* No White Spaces from blur */
   }
-  min-height: 100vh;
-  padding-top: 2rem;
+  margin-top: 10rem;
+  width: 100%;
+  min-height: 90vh;
 }

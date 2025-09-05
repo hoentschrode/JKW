@@ -107,6 +107,8 @@ class ColumnBlock(BaseStructBlock):
         default=False, required=False, label=_("Rounded borders")
     )
 
+    sticker_image = ImageChooserBlock(required=False, label=_("Sticker"))
+
     def __init__(self, local_blocks=None, search_index=True, **kwargs):
         stream_local_blocks = [
             (
