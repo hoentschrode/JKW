@@ -25,16 +25,16 @@
         <base target="_blank">
         {% endif %}
 
-        {# Global stylesheets #}
-        {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/jkw-bootstrap-theme.scss' %}" rel="stylesheet" media="screen" />
-        {% endcompress %}
-
         {% block extra_css %}
         {% compress css %}
         {# Override this in templates to add extra stylesheets #}
         {% endcompress %}
         {% endblock %}
+
+        {# Global stylesheets #}
+        {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'scss/jkw-bootstrap-theme.scss' %}" rel="stylesheet" media="screen" />
+        {% endcompress %}
     </head>
 
     <body>

@@ -4,8 +4,8 @@ Homepage - basic page without breadcrumbs.
 {% endcomment %}
 {% load static wagtailcore_tags jkwtags %}
 {% block extra_css %}
-  {{block.super}}
   <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" rel="stylesheet" media="screen" />
+  {{block.super}}
 {% endblock extra_css%}
 {% block content %}
 <main>

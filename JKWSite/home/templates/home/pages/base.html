@@ -13,6 +13,7 @@ General base page, master for all sub pages!
 
 {% block extra_css %}
   <link href="{% static 'css/aos.css' %}" rel="stylesheet">
+  {{ block.super }}
 {% endblock extra_css %}
 
 {% block header %}{% include "home/includes/header.html" %}{% endblock %}
