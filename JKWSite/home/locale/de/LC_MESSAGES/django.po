@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-25 11:34+0000\n"
+"POT-Creation-Date: 2025-11-26 14:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,56 +18,110 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: home/blocks/base.py:8
+#: home/blocks/base.py:10
 msgid "Custom element id"
 msgstr ""
 
-#: home/blocks/base.py:11
+#: home/blocks/base.py:13
 #, fuzzy
 #| msgid "Contact settings"
 msgid "Advanced settings"
 msgstr "Kontaktdaten"
 
-#: home/blocks/content.py:57
+#: home/blocks/content.py:61
 msgid "Page link"
 msgstr ""
 
-#: home/blocks/content.py:61 home/blocks/layout.py:98
+#: home/blocks/content.py:65 home/blocks/layout.py:163
+#: home/blocks/layout.py:194
 msgid "Title"
 msgstr ""
 
-#: home/blocks/content.py:62
+#: home/blocks/content.py:66
 msgid "Leave empty for document/page links to use their title."
 msgstr ""
 
-#: home/blocks/content.py:65
+#: home/blocks/content.py:69
 msgid "Open in new page"
 msgstr ""
 
-#: home/blocks/content.py:67
+#: home/blocks/content.py:71
 msgid "Document link"
 msgstr ""
 
-#: home/blocks/content.py:68
+#: home/blocks/content.py:72
 msgid "Download document"
 msgstr ""
 
-#: home/blocks/content.py:70
+#: home/blocks/content.py:74
 msgid "External URL"
 msgstr ""
 
-#: home/blocks/content.py:75 home/blocks/layout.py:55
-msgid "Link"
+#: home/blocks/content.py:78
+msgid "Default"
 msgstr ""
 
-#: home/blocks/html.py:14
+#: home/blocks/content.py:79
+msgid "Inverted default"
+msgstr ""
+
+#: home/blocks/content.py:80
+msgid "Green"
+msgstr ""
+
+#: home/blocks/content.py:81
+msgid "Purple"
+msgstr ""
+
+#: home/blocks/content.py:85 home/blocks/layout.py:103
+msgid "Theme"
+msgstr ""
+
+#: home/blocks/content.py:90 home/blocks/html.py:14
 msgid "Bootstrap-icon name"
 msgstr ""
 
-#: home/blocks/html.py:22
+#: home/blocks/content.py:93 home/blocks/html.py:22
 msgid ""
-"Insert a boostrap icon name here. Look up: <a href=\"https://icons."
-"getbootstrap.com/\" target=\"_blank\">here</a>"
+"Insert a boostrap icon name here. Look up: <a href=\"https://"
+"icons.getbootstrap.com/\" target=\"_blank\">here</a>"
+msgstr ""
+
+#: home/blocks/content.py:99 home/blocks/layout.py:19
+msgid "Link"
+msgstr ""
+
+#: home/blocks/content.py:158
+#, fuzzy
+#| msgid "Footer text"
+msgid "Overlay text"
+msgstr "Fußzeilentext"
+
+#: home/blocks/content.py:159
+msgid "Static overlay text for all slides"
+msgstr ""
+
+#: home/blocks/content.py:162
+#, fuzzy
+#| msgid "Opening hours"
+msgid "Show opening hours"
+msgstr "Öffnungszeiten"
+
+#: home/blocks/content.py:167 home/models/snippets.py:31
+#: home/models/snippets.py:38
+msgid "Carousel"
+msgstr ""
+
+#: home/blocks/content.py:177
+msgid "Background image"
+msgstr ""
+
+#: home/blocks/content.py:178
+msgid "Hero background will be blurred by default"
+msgstr ""
+
+#: home/blocks/content.py:187
+msgid "Hero"
 msgstr ""
 
 #: home/blocks/html.py:29
@@ -78,84 +132,138 @@ msgstr ""
 msgid "Select header level"
 msgstr ""
 
-#: home/blocks/html.py:46
+#: home/blocks/html.py:43
+msgid "Rainbow effect"
+msgstr ""
+
+#: home/blocks/html.py:49
 msgid "A heading on level 1..4"
 msgstr ""
 
-#: home/blocks/layout.py:20
-msgid "Automatic size"
-msgstr ""
-
-#: home/blocks/layout.py:21
-msgid "Full row"
-msgstr ""
-
-#: home/blocks/layout.py:22
-msgid "Half - 1/2 column"
-msgstr ""
-
-#: home/blocks/layout.py:23
-msgid "Thirds - 1/3 column"
-msgstr ""
-
-#: home/blocks/layout.py:24
-msgid "Thirds - 2/3 column"
-msgstr ""
-
-#: home/blocks/layout.py:25
-msgid "Quarters - 1/4 column"
-msgstr ""
-
-#: home/blocks/layout.py:26
-msgid "Quarters - 3/4 column"
-msgstr ""
-
-#: home/blocks/layout.py:27
-msgid "Sixths - 1/6 column"
-msgstr ""
-
-#: home/blocks/layout.py:28
-msgid "Sixths - 5/6 column"
-msgstr ""
-
-#: home/blocks/layout.py:29
-msgid "Twelfths - 1/12 column"
-msgstr ""
-
-#: home/blocks/layout.py:30
-msgid "Twelfths - 5/12 column"
-msgstr ""
-
-#: home/blocks/layout.py:31
-msgid "Twelfths - 7/12 column"
-msgstr ""
-
-#: home/blocks/layout.py:32
-msgid "Twelfths - 11/12 column"
-msgstr ""
-
-#: home/blocks/layout.py:36
-msgid "Column size"
-msgstr ""
-
-#: home/blocks/layout.py:48
-msgid "Column breakpoint"
-msgstr ""
-
-#: home/blocks/layout.py:53 home/blocks/layout.py:63
+#: home/blocks/layout.py:17 home/blocks/layout.py:43 home/models/pages.py:35
 msgid "Headline"
 msgstr ""
 
-#: home/blocks/layout.py:96
+#: home/blocks/layout.py:21
+msgid "Default theme"
+msgstr ""
+
+#: home/blocks/layout.py:21
+msgid "Green theme"
+msgstr ""
+
+#: home/blocks/layout.py:24
+msgid "Tile theme"
+msgstr ""
+
+#: home/blocks/layout.py:29 home/blocks/layout.py:38
+msgid "Tiles"
+msgstr ""
+
+#: home/blocks/layout.py:33 home/blocks/layout.py:52 home/blocks/layout.py:192
+#: home/models/snippets.py:46
 msgid "Image"
 msgstr ""
 
-#: home/blocks/layout.py:97
-msgid "Flyer"
+#: home/blocks/layout.py:48 home/blocks/layout.py:57
+msgid "Cards"
 msgstr ""
 
-#: home/blocks/layout.py:99 home/models/pages.py:31
+#: home/blocks/layout.py:65
+msgid "Automatic size"
+msgstr ""
+
+#: home/blocks/layout.py:66
+msgid "Full row"
+msgstr ""
+
+#: home/blocks/layout.py:67
+msgid "Half - 1/2 column"
+msgstr ""
+
+#: home/blocks/layout.py:68
+msgid "Thirds - 1/3 column"
+msgstr ""
+
+#: home/blocks/layout.py:69
+msgid "Thirds - 2/3 column"
+msgstr ""
+
+#: home/blocks/layout.py:70
+msgid "Quarters - 1/4 column"
+msgstr ""
+
+#: home/blocks/layout.py:71
+msgid "Quarters - 3/4 column"
+msgstr ""
+
+#: home/blocks/layout.py:72
+msgid "Sixths - 1/6 column"
+msgstr ""
+
+#: home/blocks/layout.py:73
+msgid "Sixths - 5/6 column"
+msgstr ""
+
+#: home/blocks/layout.py:74
+msgid "Twelfths - 1/12 column"
+msgstr ""
+
+#: home/blocks/layout.py:75
+msgid "Twelfths - 5/12 column"
+msgstr ""
+
+#: home/blocks/layout.py:76
+msgid "Twelfths - 7/12 column"
+msgstr ""
+
+#: home/blocks/layout.py:77
+msgid "Twelfths - 11/12 column"
+msgstr ""
+
+#: home/blocks/layout.py:81
+msgid "Column size"
+msgstr ""
+
+#: home/blocks/layout.py:93
+msgid "Column breakpoint"
+msgstr ""
+
+#: home/blocks/layout.py:98
+msgid "Transparent (no colors)"
+msgstr ""
+
+#: home/blocks/layout.py:99
+msgid "Black text on white"
+msgstr ""
+
+#: home/blocks/layout.py:107
+msgid "Rounded borders"
+msgstr ""
+
+#: home/blocks/layout.py:110
+msgid "Sticker"
+msgstr ""
+
+#: home/blocks/layout.py:128
+msgid "Column block"
+msgstr ""
+
+#: home/blocks/layout.py:160
+msgid "Spacing"
+msgstr ""
+
+#: home/blocks/layout.py:161
+msgid "Gap between columns"
+msgstr ""
+
+#: home/blocks/layout.py:165 home/blocks/layout.py:195 home/models/pages.py:38
+#: home/models/pages.py:60
 msgid "Subtitle"
+msgstr ""
+
+#: home/blocks/layout.py:193
+msgid "Flyer"
 msgstr ""
 
 #: home/models/footer.py:22
@@ -178,43 +286,63 @@ msgstr ""
 msgid "Home page"
 msgstr ""
 
-#: home/models/pages.py:31
-msgid "Additional sub title"
-msgstr ""
+#: home/models/pages.py:35
+msgid "Headline text"
+msgstr "Titelzeile"
 
-#: home/models/pages.py:39
+#: home/models/pages.py:38
+msgid "Sub headline"
+msgstr "Untertitel"
+
+#: home/models/pages.py:42
+msgid "Message text"
+msgstr "Nachricht"
+
+#: home/models/pages.py:43
+msgid "Short message to the user"
+msgstr "Kurze Nachricht an den Besucher"
+
+#: home/models/pages.py:53
+msgid "Maintenance page"
+msgstr "Wartungsarbeiten"
+
+#: home/models/pages.py:60
+msgid "Additional sub title"
+msgstr "Untertitel"
+
+#: home/models/pages.py:68
 msgid "Descriptive sample image (cropped to be rectangled)."
 msgstr "Vorschaubild (wird quaratisch zugeschnitten)"
 
-#: home/models/pages.py:49
+#: home/models/pages.py:78
 msgid "Description"
 msgstr "Beschreibung"
 
-#: home/models/pages.py:49
+#: home/models/pages.py:78
 msgid "Short description text"
 msgstr "Kurzer Teaser Text"
 
-#: home/models/pages.py:68
+#: home/models/pages.py:97
 msgid "Flyer page"
 msgstr "Flyer-Seite"
 
-#: home/models/pages.py:75
+#: home/models/pages.py:104
 msgid "Introduction"
 msgstr "Text"
 
-#: home/models/pages.py:76
+#: home/models/pages.py:105
 msgid "Text to describe the page"
 msgstr "Kurzer Text zur Einführung"
 
-#: home/models/pages.py:92
+#: home/models/pages.py:122
 msgid "Flyer index page"
 msgstr "Flyerübersicht-Seite"
 
-#: home/models/pages.py:98
+#: home/models/pages.py:128
 msgid "Page body"
 msgstr ""
 
-#: home/models/settings.py:16
+#: home/models/settings.py:16 home/models/snippets.py:20
 msgid "Name"
 msgstr ""
 
@@ -267,9 +395,22 @@ msgid "Contact settings"
 msgstr "Kontaktdaten"
 
 #: home/models/settings.py:87 home/models/settings.py:93
+#: home/templates/home/blocks/carousel.html:11
 #: home/templates/home/includes/footer.html:42
 msgid "Opening hours"
 msgstr "Öffnungszeiten"
+
+#: home/models/snippets.py:23
+msgid "Slider"
+msgstr ""
+
+#: home/models/snippets.py:24
+msgid "Slides"
+msgstr ""
+
+#: home/models/snippets.py:52
+msgid "Carousel slide"
+msgstr ""
 
 #: home/templates/home/includes/flyer_item.html:12
 msgid "Download Flyer"
