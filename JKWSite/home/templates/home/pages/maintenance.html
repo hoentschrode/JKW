@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% comment %}
+Homepage - basic page without breadcrumbs.
+{% endcomment %}
+{% load static wagtailcore_tags wagtailimages_tags jkwtags %}
+{% block content %}
+<main>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">
+              {% picture settings.home.ContactSettings.logo_image format-{avif,webp,png} fill-100x70 id="pic" %}
+        </div>
+        <div class="col">
+          <h1>{{ page.headline }}</h1>
+          {% if page.sub_headline %}
+            <h2>{{ page.sub_headline }}</h2>
+          {% endif %}  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">{{ page.message|richtext }}</div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock content %}
+{% block footer %}
+  {% include "home/includes/footer.html" %}
+{% endblock %}

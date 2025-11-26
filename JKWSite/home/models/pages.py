@@ -1,5 +1,5 @@
 from django.db.models import PROTECT, CharField, ForeignKey, TextField
-from wagtail.fields import StreamField
+from wagtail.fields import RichTextField, StreamField
 from wagtail.models import Page
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.panels import FieldPanel, FieldRowPanel
@@ -22,6 +22,35 @@ class HomePage(Page):
 
     class Meta:
         verbose_name = _("Home page")
+
+
+class MaintenancePage(Page):
+    """A special page shown in maintenance phases."""
+
+    template = "home/pages/maintenance.html"
+    maxs_count = 1
+    subpage_types = []
+    # Fields
+    headline = CharField(
+        blank=True, verbose_name=_("Headline"), help_text=_("Headline text")
+    )
+    sub_headline = CharField(
+        blank=True, verbose_name=_("Sub headline"), help_text=_("Subtitle")
+    )
+    message = RichTextField(
+        blank=True,
+        verbose_name=_("Message text"),
+        help_text=_("Short message to the user"),
+    )
+    # Panels
+    content_panels = Page.content_panels + [
+        FieldPanel("headline"),
+        FieldPanel("sub_headline"),
+        FieldPanel("message"),
+    ]
+
+    class Meta:
+        verbose_name = _("Maintenance page")
 
 
 class FlyerPage(Page):
