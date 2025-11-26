@@ -14,7 +14,7 @@ class HomePage(Page):
     """
 
     template = "home/pages/home.html"
-    max_count = 1
+    parent_page_types = ["wagtailcore.Page"]
     # Fields
     body = StreamField(LAYOUT_BLOCKS, null=True, blank=True)
     # Panels
@@ -28,7 +28,7 @@ class MaintenancePage(Page):
     """A special page shown in maintenance phases."""
 
     template = "home/pages/maintenance.html"
-    maxs_count = 1
+    parent_page_types = ["wagtailcore.Page"]
     subpage_types = []
     # Fields
     headline = CharField(
@@ -108,6 +108,7 @@ class FlyerIndexPage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("introduction")]
     subpage_types = ["FlyerPage"]
+    parent_page_types = ["HomePage"]
     template = "home/pages/flyer_index.html"
 
     def get_context(self, request, *args, **kwargs):
@@ -128,3 +129,4 @@ class StandardPage(Page):
 
     content_panels = Page.content_panels + [FieldPanel("body")]
     template = "home/pages/page.html"
+    parent_page_types = ["HomePage", "StandardPage", "FlyerIndexPage"]
