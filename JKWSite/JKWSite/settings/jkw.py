@@ -12,11 +12,24 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import environ
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+env = environ.Env(
+    DEBUG=(bool, False),
+    ALLOWED_HOSTS=(str, "*"),
+    EMAIL_BACKEND=(str, "django.core.mail.backends.console.EmailBackend"),
+    SECRET_KEY=(str, None),
+)
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+DEBUG = env("DEBUG")
+SECRET_KEY = env("SECRET_KEY")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(",")  # type:ignore
+EMAIL_BACKEND = env("EMAIL_BACKEND")
 
+#
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -118,6 +131,19 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, "..", "log/jkw.log"),
+        }
+    },
+    "loggers": {"django": {"handlers": ["file"], "level": "DEBUG", "propagate": True}},
+}
 
 
 # Internationalization

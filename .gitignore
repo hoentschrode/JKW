@@ -21,4 +21,4 @@ JKWSite/media/images/*
 JKWSite/media/original_images/*
 !JKWSite/static
 JKWSite/static/**
-
+log/**
